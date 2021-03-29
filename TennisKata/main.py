@@ -72,25 +72,24 @@ def TennisScore():
         root.score2 = "loser"
     if(root.counter2 >= 4 and root.counter1+1 < root.counter2):
         root.score1 = "loser"
-        root.score2 = "winner"
+        root.score2 = "winner"      
 
 
-        
+if __name__ == "__main__":
+    L1 = Label(root.counter1, text="Love")
+    L1.pack()
+    b1 = Button(root, text="Point Player 1", command=input1)
+    b1.pack()
 
-L1 = Label(root.counter1, text="Love")
-L1.pack()
-b1 = Button(root, text="Point Player 1", command=input1)
-b1.pack()
+    L2 = Label(root.counter2, text="Love")
+    L2.pack()
+    b2 = Button(root, text="Point Player 2", command=input2)
+    b2.pack()
 
-L2 = Label(root.counter2, text="Love")
-L2.pack()
-b2 = Button(root, text="Point Player 2", command=input2)
-b2.pack()
+    b3 = Button(root, text="reset", command=input3)
+    b3.pack()
 
-b3 = Button(root, text="reset", command=input3)
-b3.pack()
+    TennisScore()
+    UpdateScore()
 
-TennisScore()
-UpdateScore()
-
-root.mainloop()
+    root.mainloop()
