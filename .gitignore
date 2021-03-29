@@ -1,4 +1,5 @@
 .vscode/*
+*/.vscode/*
 test.py
 
 *.pdf
