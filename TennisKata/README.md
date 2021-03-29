@@ -13,5 +13,5 @@ https://everydaysuperpowers.dev/python-growth-challenge/tennis-kata/
 
 # Personal Notes
 
-3/28-
-At the moment this is just a rough draft / early prototype to show all the core functionality works. Once that is confirmed I will polish / do something cooler? I haven't made anything with tkinter before so this may be a good time to see how far I can go with this problem in tkinter.  
+3/28
+At the moment this is just a rough draft / early prototype to show all the core functionality works. Once that is confirmed I will polish. 
