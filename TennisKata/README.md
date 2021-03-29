@@ -10,3 +10,8 @@ If at least three points have been scored by each player, and the scores are equ
 If at least three points have been scored by each side and a player has one more point than his opponent, the score of the game is “advantage” for the player in the lead.
 
 https://everydaysuperpowers.dev/python-growth-challenge/tennis-kata/
+
+# Personal Notes
+
+3/28
+At the moment this is just a rough draft / early prototype to show all the core functionality works. Once that is confirmed I will polish. 
