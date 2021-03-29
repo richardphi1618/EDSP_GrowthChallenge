@@ -76,18 +76,21 @@ def TennisScore():
 
 
 if __name__ == "__main__":
+
+    root.geometry("300x100+200+200")
+
     L1 = Label(root.counter1, text="Love")
-    L1.pack()
+    L1.grid(row=1, column=0, padx=20, pady=10)
     b1 = Button(root, text="Point Player 1", command=input1)
-    b1.pack()
+    b1.grid(row=2, column=0, padx=10, pady=10)
 
     L2 = Label(root.counter2, text="Love")
-    L2.pack()
+    L2.grid(row=1, column=1, padx=20, pady=10)
     b2 = Button(root, text="Point Player 2", command=input2)
-    b2.pack()
+    b2.grid(row=2, column=1, padx=10, pady=10)
 
     b3 = Button(root, text="reset", command=input3)
-    b3.pack()
+    b3.grid(row=2, column=3, padx=20, pady=10)
 
     TennisScore()
     UpdateScore()
