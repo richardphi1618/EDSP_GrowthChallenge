@@ -52,6 +52,7 @@ def TennisScore():
     if (root.counter[1] >= 3 and root.counter[2] >= 3 and root.counter[1] > root.counter[2]):
         root.score[1] = "Advantage"
         root.score[2] = "-"
+        
     if(root.counter[1] >= 3 and root.counter[2] >= 3 and root.counter[1] < root.counter[2]):
         root.score[1] = "-"
         root.score[2] = "Advantage"
