@@ -2,14 +2,14 @@ import PySimpleGUI as sg
 from random import randint
 from PIL import Image, ImageTk
 window, previous_total, total = None, -1 , 0
-dice = [6]*6
-rerolls = [0]*6
+dice = [6]*5
+rerolls = [0]*5
 dice_img = []
 
 turn = 0
 
 for i in range(len(dice)):
-    dice_img += [sg.Image(filename=f'./images/{dice[i]}.png', size=(200,200), key= f'_DieImage{i}_')]
+    dice_img += [sg.Image(filename=f'./images/{dice[i]}.png', size=(200,200), key= f'_DieImage{i}_', tooltip = f'Die {i+1}')]
 
 def load_image(path, window, frame):
     try:
@@ -24,7 +24,7 @@ def load_image(path, window, frame):
 sg.theme('dark grey 9')
 layout = [
 [sg.Text('Controls:')],
-[sg.Button(f'Hold Die {col+1}') for col in range(6)],
+[sg.Button(f'Hold Die {col+1}') for col in range(5)],
 [sg.Button('Roll Dice', bind_return_key=True)],
 [sg.Text('  3 ',size=(3,1), key='_TOTAL_', font='ANY 20', text_color = 'red')],
 [sg.Text(f'Turn {turn}', key = "_Turn_")],
@@ -69,6 +69,10 @@ while True:         #Main Dice Rolling Loop
 
         if "Hold Die" in event and turn > 0:
             hold_val = int(event[-1])
-            rerolls[hold_val-1] = 1
+            if rerolls[hold_val-1] == 1:
+                rerolls[hold_val-1] = 0
+            elif rerolls[hold_val-1] == 0:
+                rerolls[hold_val-1] = 1
             print(rerolls)
+        
             
