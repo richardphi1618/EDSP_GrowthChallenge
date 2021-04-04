@@ -21,6 +21,9 @@ def load_image(path, window, frame):
         print(f"Unable to open {path}!")
         print(f"error: {e}")
 
+
+
+
 sg.theme('dark grey 9')
 layout = [
 [sg.Text('Controls:')],
