@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 from random import randint
 from PIL import Image, ImageTk
+import YahtzeeScore as YS
 import os
 
 window, previous_total, total = None, -1 , 0
@@ -9,6 +10,7 @@ rerolls = [0]*5
 dice_img = []
 ScoreLogged = False
 turn = 0
+CurrentScore = 0
 
 cwd = os.getcwd()
 
@@ -64,9 +66,10 @@ while True:         #Main Dice Rolling Loop
             print(values)
             if event == sg.WIN_CLOSED or event == "LogScore":
                 print ("Closed Score")
-                print (f"final score for round: {total}")
                 print (f"final dice: {dice}")
 
+                CurrentScore = YS.Check(values, dice, CurrentScore)
+                
                 turn = 0
                 total = 0
                 dice = [6]*5
@@ -82,6 +85,10 @@ while True:         #Main Dice Rolling Loop
                 for i in range(len(dice)): 
                     load_image(f'./images/{dice[i]}.png',window, f'_DieImage{i}_')
 
+                print (f"Current Score: {CurrentScore}")
+                
+                ScoreCard_Options.remove(values['ScoreOptions'][0])
+                
                 ScoreWindow.close()
 
     else:
