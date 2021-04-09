@@ -18,7 +18,7 @@ ScoreCard_Options = ["ones", "twos", "threes", "fours", "fives", "sixes", "Three
                         "Four of a Kind", "Full House", "Small Straight", "Large Straight", "Yahtzee", "Chance"]
 
 for i in range(len(dice)):
-    dice_img += [sg.Image(filename=f'{cwd}/images/{dice[i]}.png', size=(200,200), key= f'_DieImage{i}_', tooltip = f'Die {i+1}')]
+    dice_img += [sg.Image(filename=f'./images/{dice[i]}.png', size=(200,200), key= f'_DieImage{i}_', tooltip = f'Die {i+1}')]
 
 def LaunchScoreWindow():
     layout = [[sg.Text('The second window')],
