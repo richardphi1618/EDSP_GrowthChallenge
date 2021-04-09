@@ -12,14 +12,15 @@ turn = 0
 
 cwd = os.getcwd()
 
-ScoreCard_Options = ["option1", "option2", "option3"]
+ScoreCard_Options = ["ones", "twos", "threes", "fours", "fives", "sixes", "Three of a Kind", \
+                        "Four of a Kind", "Full House", "Small Straight", "Large Straight", "Yahtzee", "Chance"]
 
 for i in range(len(dice)):
     dice_img += [sg.Image(filename=f'{cwd}/images/{dice[i]}.png', size=(200,200), key= f'_DieImage{i}_', tooltip = f'Die {i+1}')]
 
 def LaunchScoreWindow():
     layout = [[sg.Text('The second window')],
-              [sg.InputCombo(ScoreCard_Options, enable_events=True, size=(30,1), k='ScoreOptions')],
+              [sg.Listbox(ScoreCard_Options, enable_events=True, size=(30,15), k='ScoreOptions')],
               [sg.Button('Accept', k='LogScore')]]
     return sg.Window('Second Window', layout, finalize=True)
 
