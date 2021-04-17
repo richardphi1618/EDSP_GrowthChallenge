@@ -19,7 +19,7 @@ def Check(values, dice, CurrentScore):
             points = 0
 
             for i in range(len(dice)):
-                if(dice[i] == (x+1)): points += dice[i]
+                if(dice[i] == (x)): points += dice[i]
             
             CurrentScore += points     
 
@@ -39,8 +39,8 @@ def Check(values, dice, CurrentScore):
         points = 0
 
         Count = Counter(dice)
-        for i in range(len(dice)):
-            if (Count[i] >= 3): 
+        for i in range(6):
+            if (Count[i+1] >= 3): 
                 points = sum(dice)
                 break
 
@@ -52,8 +52,8 @@ def Check(values, dice, CurrentScore):
         points = 0
 
         Count = Counter(dice)
-        for i in range(len(dice)):
-            if (Count[i] >= 4): 
+        for i in range(6):
+            if (Count[i+1] >= 4): 
                 points = sum(dice)
                 break
 
@@ -70,9 +70,9 @@ def Check(values, dice, CurrentScore):
         for i in range(len(dice)):
             if (Count[i] == 3): Check_3 = True
             if (Count[i] == 2): Check_2 = True
-            if (Check_3 and Check_2):
-                points = 25
-                break
+        
+        if (Check_3 and Check_2):
+            points = 25
 
         CurrentScore += points   
 

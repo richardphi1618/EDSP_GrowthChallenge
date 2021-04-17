@@ -64,7 +64,13 @@ while True:         #Main Dice Rolling Loop
             event, values = ScoreWindow.Read()
             print(event)
             print(values)
-            if event == sg.WIN_CLOSED or event == "LogScore":
+
+            if event == sg.WIN_CLOSED or event == "LogScore" and values['ScoreOptions'] == []:
+                print("----Error----")
+                print("Please select ScoreOption")
+                #TODO:insert popup?
+
+            if event == sg.WIN_CLOSED or event == "LogScore" and values['ScoreOptions'] != []:
                 print ("Closed Score")
                 print (f"final dice: {dice}")
 
