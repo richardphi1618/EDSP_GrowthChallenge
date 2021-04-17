@@ -1,12 +1,18 @@
 from collections import Counter
 
 
-ScoreCard_Options = ["ones", "twos", "threes", "fours", "fives", "sixes", "Three of a Kind", \
+ScoreCard_Options = ["", "ones", "twos", "threes", "fours", "fives", "sixes", "Three of a Kind", \
                         "Four of a Kind", "Full House", "Small Straight", "Large Straight", "Yahtzee", "Chance"]
+
+def checkConsecutive(l):
+    return sorted(l) == list(range(min(l), max(l)+1))
 
 
 def Check(values, dice, CurrentScore):
 
+    #########################################################
+    # Upper Section
+    #########################################################
     for x in range(6):
         if values['ScoreOptions'][0] == ScoreCard_Options[x]:
             print(f"player selected {values['ScoreOptions'][0]}")
@@ -16,17 +22,20 @@ def Check(values, dice, CurrentScore):
                 if(dice[i] == (x+1)): points += dice[i]
             
             CurrentScore += points     
-    
-    if values['ScoreOptions'][0] == "Yahtzee":
+
+
+    #########################################################
+    # Lower Section
+    #########################################################
+
+    #Nothing Selected
+    #TODO: Error Handling
+    if values['ScoreOptions'][0] == ScoreCard_Options[0]:
+        print("---ERROR---")
+
+    #3 of a kind
+    elif values['ScoreOptions'][0] == ScoreCard_Options[7]:
         print(f"player selected {values['ScoreOptions'][0]}")
-        points = 0
-
-        if(all(x == dice[0] for x in dice)): points = 50
-
-        CurrentScore += points     
-
-    elif values['ScoreOptions'][0] == "Three of a Kind":
-        print(f"player selected twos")
         points = 0
 
         Count = Counter(dice)
@@ -37,8 +46,9 @@ def Check(values, dice, CurrentScore):
 
         CurrentScore += points     
 
-    elif values['ScoreOptions'][0] == "Four of a Kind":
-        print(f"player selected twos")
+    #4 of a Kind
+    elif values['ScoreOptions'][0] == ScoreCard_Options[8]:
+        print(f"player selected {values['ScoreOptions'][0]}")
         points = 0
 
         Count = Counter(dice)
@@ -49,13 +59,14 @@ def Check(values, dice, CurrentScore):
 
         CurrentScore += points    
     
-    elif values['ScoreOptions'][0] == "Full House":
-        print(f"player selected twos")
+    #Full House
+    elif values['ScoreOptions'][0] == ScoreCard_Options[9]:
+        print(f"player selected {values['ScoreOptions'][0]}")
         points = 0
         Check_3 = False
         Check_2 = False
         Count = Counter(dice)
-        
+
         for i in range(len(dice)):
             if (Count[i] == 3): Check_3 = True
             if (Count[i] == 2): Check_2 = True
@@ -64,9 +75,37 @@ def Check(values, dice, CurrentScore):
                 break
 
         CurrentScore += points   
+
+    #Straights
+    elif values['ScoreOptions'][0] == ScoreCard_Options[10] or values['ScoreOptions'][0] == ScoreCard_Options[11] :
+        print(f"player selected {values['ScoreOptions'][0]}")
+        points = 0
+        previous = 10
+        count = 0
+
+        #remove duplicates
+        res = []
+        for i in range(len(dice)):
+            if dice[i] not in res:
+                res.append(dice[i])
+        
+        if(len(res) >= 4 and checkConsecutive(res) and values['ScoreOptions'][0] == ScoreCard_Options[10]): points = 30
+        if(len(res) >= 5 and checkConsecutive(res) and values['ScoreOptions'][0] == ScoreCard_Options[11]): points = 40
+
+        CurrentScore += points   
+    
+    #Yahtzee
+    elif values['ScoreOptions'][0] == ScoreCard_Options[12]:
+        print(f"player selected {values['ScoreOptions'][0]}")
+        points = 0
+
+        if(all(x == dice[0] for x in dice)): points = 50
+
+        CurrentScore += points    
  
-    elif values['ScoreOptions'][0] == "Chance":
-        print(f"player selected twos")
+    #Chance
+    elif values['ScoreOptions'][0] == ScoreCard_Options[13]:
+        print(f"player selected {values['ScoreOptions'][0]}")
         points = 0
 
         for i in range(len(dice)):
