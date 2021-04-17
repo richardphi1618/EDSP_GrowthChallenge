@@ -51,7 +51,7 @@ window = sg.Window('Dice Roller', layout).Finalize()
 while True:         #Main Dice Rolling Loop
 
     if previous_total != total:
-        window.Element('_TOTAL_').Update(total)
+        window.Element('_TOTAL_').Update(CurrentScore)
         window.Element('_Turn_').Update(f"Turn: {turn}")
         
         for i in range(len(dice)): 
@@ -79,7 +79,7 @@ while True:         #Main Dice Rolling Loop
                 for i in range(len(dice)):
                     dice_img += [sg.Image(filename=f'{cwd}/images/{dice[i]}.png', size=(200,200), key= f'_DieImage{i}_', tooltip = f'Die {i+1}')]
                 
-                window.Element('_TOTAL_').Update(total)
+                window.Element('_TOTAL_').Update(CurrentScore)
                 window.Element('_Turn_').Update(f"Turn: {turn}")
 
                 for i in range(len(dice)): 
