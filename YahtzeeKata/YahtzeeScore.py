@@ -13,12 +13,12 @@ def Check(values, dice, CurrentScore):
     #########################################################
     # Upper Section
     #########################################################
-    for x in range(6):
+    for x in range(1,7):
         if values['ScoreOptions'][0] == ScoreCard_Options[x]:
             print(f"player selected {values['ScoreOptions'][0]}")
             points = 0
 
-            for i in range(len(dice)):
+            for i in range(1,7):
                 if(dice[i] == (x)): points += dice[i]
             
             CurrentScore += points     
@@ -67,7 +67,7 @@ def Check(values, dice, CurrentScore):
         Check_2 = False
         Count = Counter(dice)
 
-        for i in range(len(dice)):
+        for i in range(1,7):
             if (Count[i] == 3): Check_3 = True
             if (Count[i] == 2): Check_2 = True
         
@@ -85,7 +85,7 @@ def Check(values, dice, CurrentScore):
 
         #remove duplicates
         res = []
-        for i in range(len(dice)):
+        for i in range(1,7):
             if dice[i] not in res:
                 res.append(dice[i])
         
@@ -108,7 +108,7 @@ def Check(values, dice, CurrentScore):
         print(f"player selected {values['ScoreOptions'][0]}")
         points = 0
 
-        for i in range(len(dice)):
+        for i in range(1,7):
             points += dice[i]
 
         CurrentScore += points     

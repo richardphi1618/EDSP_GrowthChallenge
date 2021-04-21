@@ -83,7 +83,10 @@ while True:         #Main Dice Rolling Loop
                 ScoreLogged = True
 
                 for i in range(len(dice)):
-                    dice_img += [sg.Image(filename=f'{cwd}/images/{dice[i]}.png', size=(200,200), key= f'_DieImage{i}_', tooltip = f'Die {i+1}')]
+                    dice_img += [sg.Image(filename=f'{cwd}/images/{dice[i]}.png', \
+                                size=(200,200), \
+                                key= f'_DieImage{i}_', \
+                                tooltip = f'Die {i+1}')]
                 
                 window.Element('_TOTAL_').Update(CurrentScore)
                 window.Element('_Turn_').Update(f"Turn: {turn}")

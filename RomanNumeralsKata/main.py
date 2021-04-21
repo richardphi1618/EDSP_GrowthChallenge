@@ -26,10 +26,10 @@ while True:
     button, value = form.Read()                            # call GUI
     
     # Press Button
-    if button is 'c':
+    if button == 'c':
         Equal = ''
         form.FindElement('input').Update(Equal)
-    elif button is '«':
+    elif button == '«':
         Equal = Equal[:-1]
         form.FindElement('input').Update(Equal)
     elif len(Equal) == 16 :
@@ -37,23 +37,23 @@ while True:
     elif str(button) in '1234567890+-().':
         Equal += str(button)
         form.FindElement('input').Update(Equal) 
-    elif button is 'x':
+    elif button == 'x':
         Equal += '*'
         form.FindElement('input').Update(Equal)
-    elif button is '÷':
+    elif button == '÷':
         Equal += '/'
         form.FindElement('input').Update(Equal)
-    elif button is 'RN':
+    elif button == 'RN':
         num = int(Equal)
         RomanNumeral = RN(num)
-        sg.popup_ok(RomanNumeral.RN)
+        sg.popup_ok("The Roman Numeral is: \n" + RomanNumeral.RN)
 
     
    # Process Conditional
-    elif button is '=':
+    elif button == '=':
         # Error Case
         for i in List_Op_Error :  
-            if '*' is Equal[0] or '/' is Equal[0] or ')' is Equal[0]  or i is Equal[-1]:   # Check Error Case
+            if '*' == Equal[0] or '/' == Equal[0] or ')' == Equal[0]  or i == Equal[-1]:   # Check Error Case
                 Answer = "Error Operation" 
                 break
             elif Equal == '6001012630187':
@@ -78,5 +78,5 @@ while True:
         form.FindElement('input').Update(Answer)                         # Update to GUI
         Equal = Answer
 
-    elif button is 'Quit'  or button is None:                            # QUIT Program
+    elif button == 'Quit'  or button is None:                            # QUIT Program
         break
